@@ -42,7 +42,7 @@ START HERE → ⭐ YOU ARE HERE ⭐ → PHASE 2 → PHASE 3 → DONE!
 └─────────────────────────────────────────────────────────┘
 ```
 
-### Files You Created (12 new)
+### Files Created (12 new)
 ```
 backend/
 ├── ✅ app/config.py           (Settings management)

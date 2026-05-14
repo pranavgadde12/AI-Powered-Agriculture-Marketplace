@@ -18,8 +18,8 @@ class Settings(BaseSettings):
     api_host: str = os.getenv("API_HOST", "127.0.0.1")
     api_port: int = int(os.getenv("API_PORT", "8000"))
     
-    # AI (OpenAI)
-    openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
+    # AI (Anthropic Claude)
+    anthropic_api_key: str = os.getenv("ANTHROPIC_API_KEY", "")
     
     # CORS
     cors_origins: list = ["*"]

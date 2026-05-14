@@ -19,7 +19,7 @@ class ProductBase(BaseModel):
 
 class ProductCreate(ProductBase):
     """Data when creating a new product"""
-    farmer_id: Optional[int] = None
+    farmer_id: Optional[str] = None
 
 class ProductUpdate(BaseModel):
     """Data when updating product"""
@@ -33,7 +33,7 @@ class ProductUpdate(BaseModel):
 class ProductResponse(ProductBase):
     """Product as returned from API"""
     id: int
-    farmer_id: Optional[int]
+    farmer_id: Optional[str]
     created_at: Optional[datetime] = None
     
     class Config:
@@ -46,7 +46,7 @@ class ProductResponse(ProductBase):
 class OrderCreate(BaseModel):
     """Data when creating order"""
     product_id: int = Field(..., gt=0, description="Product ID")
-    customer_id: int = Field(..., gt=0, description="Customer ID")
+    customer_id: str = Field(..., description="Customer UUID from Supabase auth")
 
 class OrderUpdate(BaseModel):
     """Data when updating order status"""
@@ -56,7 +56,7 @@ class OrderResponse(BaseModel):
     """Order as returned from API"""
     id: int
     product_id: int
-    customer_id: int
+    customer_id: str
     status: str
     created_at: Optional[datetime] = None
     
@@ -70,6 +70,7 @@ class OrderResponse(BaseModel):
 class AIMessage(BaseModel):
     """Message sent to AI"""
     message: str = Field(..., min_length=1, max_length=1000)
+    mode: str = Field(default="farmer", description="farmer or customer")
     context: Optional[str] = None
 
 class AIResponse(BaseModel):
